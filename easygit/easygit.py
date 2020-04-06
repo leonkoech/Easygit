@@ -247,7 +247,6 @@ def main():
         helpme()
     
     if ui=='push':
-        setup()
         push()
     if ui=='create':
         print('\n enter the email address and password related to your github account\n')
