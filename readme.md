@@ -1,11 +1,11 @@
 # easy git
-![selenium:3.141.0](https://img.shields.io/badge/selenium-3.141.0-blue)
-![chromedriver:80.0.3987.106](https://img.shields.io/badge/chromedriver-80.0.3987.106-blue)
-![python:3.7.3](https://img.shields.io/badge/python-3.7.3-blue)
-![build:passing](https://img.shields.io/badge/build-passing-green)
-![coverage:76%](https://img.shields.io/badge/coverage-76%25-yellowgreen)
+![selenium:3.141.0] (https://img.shields.io/badge/selenium-3.141.0-blue)
+![chromedriver:80.0.3987.106] (https://img.shields.io/badge/chromedriver-80.0.3987.106-blue)
+![python:3.7.3] (https://img.shields.io/badge/python-3.7.3-blue)
+![build:passing] (https://img.shields.io/badge/build-passing-green)
+![coverage:76%] (https://img.shields.io/badge/coverage-76%25-yellowgreen)
 
-**easygit is an automation software for github.**
+*easygit is an automation software for github.*
 I created the project to help me easily create a gihub project, create a local directory based on the project type/language and open vs code with all with one command.
 
 ``easygit create python easygit``
@@ -33,24 +33,24 @@ To enable easygit to run on other operating systems there are additional setting
 
 1. when running the project to push or create, you'll get this after verifying your credentials. Type Y.
 
-``do you want to make additional changes?Y/n: ``
+    ``do you want to make additional changes?Y/n: ``
 
 2. select the documents where you should store your folders. The main directory is home. If you wish to change the directory select yes. Do this for all the three folders.
 
-``python project folder: home/python``
+    ``python project folder: home/python``
 
 3. type n when asked the following and type the location of your google chrome executable
 
-``
-location of your chrome bin/executable: /usr/bin/google-chrome
-is this ok?Y/n
-``
+    ``
+    location of your chrome bin/executable: /usr/bin/google-chrome
+    is this ok?Y/n
+    ``
 4. type n when asked the following and type the location of your chrome driver
 
-``
-location of your chromedriver: /usr/local/bin/chromedriver
-is this ok?Y/n
-``
+    ``
+    location of your chromedriver: /usr/local/bin/chromedriver
+    is this ok?Y/n
+    ``
 
 # installation
 
@@ -59,26 +59,26 @@ Also a disclaimer of sorts, this installation is for linux systems. Please look 
 
 1. clone easygit project to a directory of your choice and open the easygit folder. 
 
-``easygit/easygit``
+    ``easygit/easygit``
 
 2. run the following command in a terminal
 
-``chmod +x easygit.py``
+    ``chmod +x easygit.py``
 
 3. edit the shebang - *the **!/usr/bin/env python3** at the top to match the location of your python environment. Though this shebang should work on both mac and linux systems*
 
 4. drop the .py extension by running the following command
 
-``mv easygit.py easygit``
+    ``mv easygit.py easygit``
 
 5. Now add easy git to your path. Start by creating bin directory if you don't already have it. It's in home/bin
         create bin
-``mkdir -p ~/bin``
+    ``mkdir -p ~/bin``
         or  continur if bin already exists
 
 6. copy script to bin
 
-``cp easygit ~/bin``
+    ``cp easygit ~/bin``
 
 7. finally add it to your path. You can either add it temporarily or permanently.
         to add it temporarily run the folowing command
