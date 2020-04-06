@@ -240,7 +240,6 @@ def tostring(usi):
         string+=elements
     return string
 def main():
-    print('wozap')
     userinput=sys.argv[1]
     ui=tostring(userinput)
     if ui=='help':
