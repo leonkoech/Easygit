@@ -3,8 +3,8 @@
 ![chromedriver:80.0.3987.106](https://img.shields.io/badge/chromedriver-80.0.3987.106-blue)
 ![python:3.7.3](https://img.shields.io/badge/python-3.7.3-blue)
 ![build:passing](https://img.shields.io/badge/build-passing-green)
-![coverage:76%](https://img.shields.io/badge/coverage-76%25-yellowgreen)
 ![selenium:3.141.0](https://img.shields.io/badge/selenium-3.141.0-black)
+![coverage:76%](https://img.shields.io/badge/coverage-76%25-yellowgreen)
 
 
 **easygit is an automation software for github.**
