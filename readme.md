@@ -1,11 +1,14 @@
 # easy git
-![selenium:3.141.0] (https://img.shields.io/badge/selenium-3.141.0-blue)
-![chromedriver:80.0.3987.106] (https://img.shields.io/badge/chromedriver-80.0.3987.106-blue)
-![python:3.7.3] (https://img.shields.io/badge/python-3.7.3-blue)
-![build:passing] (https://img.shields.io/badge/build-passing-green)
-![coverage:76%] (https://img.shields.io/badge/coverage-76%25-yellowgreen)
 
-*easygit is an automation software for github.*
+![chromedriver:80.0.3987.106](https://img.shields.io/badge/chromedriver-80.0.3987.106-blue)
+![python:3.7.3](https://img.shields.io/badge/python-3.7.3-blue)
+![build:passing](https://img.shields.io/badge/build-passing-green)
+![coverage:76%](https://img.shields.io/badge/coverage-76%25-yellowgreen)
+![selenium:3.141.0](https://img.shields.io/badge/selenium-3.141.0-black)
+
+
+**easygit is an automation software for github.**
+
 I created the project to help me easily create a gihub project, create a local directory based on the project type/language and open vs code with all with one command.
 
 ``easygit create python easygit``
@@ -15,15 +18,18 @@ Also easy git can push the initialize, add origin, commit and push a project to 
 ``easygit push initial-commit https://github.com/leonkoech/easygit``
 
 you can force a push by adding '-f' or '--force'
+
 ``easygit push initial-commit https://github.com/leonkoech/easygit -f``
 
 # requirements
 
 easygit requires the following to run
 
-selenium 3.141.0 [documentation](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.current_url)[download](https://pypi.org/project/selenium/)
-chrome version 80 [download](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwpqv0BRABEiwA-TySwcmdG9S6AfkK0EmkAgCUchDrG_NLrQmbyZ5PcTMYACxK2po4Tsq5nhoCZh0QAvD_BwE&gclsrc=aw.ds)
-chromedriver 80.0.3987.106[download](https://chromedriver.chromium.org/downloads)
+*selenium 3.141.0 [documentation](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.current_url)[download](https://pypi.org/project/selenium/)
+
+*chrome version 80 [download](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwpqv0BRABEiwA-TySwcmdG9S6AfkK0EmkAgCUchDrG_NLrQmbyZ5PcTMYACxK2po4Tsq5nhoCZh0QAvD_BwE&gclsrc=aw.ds)
+
+*chromedriver 80.0.3987.106[download](https://chromedriver.chromium.org/downloads)
 python 3.7.3+ [download](https://www.python.org/downloads/)
 
 # setup
@@ -35,7 +41,7 @@ To enable easygit to run on other operating systems there are additional setting
 
     ``do you want to make additional changes?Y/n: ``
 
-2. select the documents where you should store your folders. The main directory is home. If you wish to change the directory select yes. Do this for all the three folders.
+2. select the documents where you should store your folders. The main directory is home. If you wish to change the directory    select yes. Do this for all the three folders.
 
     ``python project folder: home/python``
 
@@ -74,7 +80,7 @@ Also a disclaimer of sorts, this installation is for linux systems. Please look 
 5. Now add easy git to your path. Start by creating bin directory if you don't already have it. It's in home/bin
         create bin
     ``mkdir -p ~/bin``
-        or  continur if bin already exists
+        or  continue if bin already exists
 
 6. copy script to bin
 
@@ -87,6 +93,9 @@ Also a disclaimer of sorts, this installation is for linux systems. Please look 
     ``echo 'export PATH=$PATH":$HOME/bin"' >> .profile``
         refresh terminal with the following commannd OR just open a new terminal
     ``source .profile``
+# screenshots
+
+
 
 # contribution
 
