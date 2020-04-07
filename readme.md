@@ -21,18 +21,18 @@ you can force a push by adding '-f' or '--force'
 
 ``easygit push initial-commit https://github.com/leonkoech/easygit -f``
 
-# requirements
+# Requirements
 
-easygit requires the following to run
+Easygit requires the following to run
 
-*selenium 3.141.0 [documentation](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.current_url) [download](https://pypi.org/project/selenium/)
+* selenium 3.141.0 --> [Documentation](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.current_url) --> [Download](https://pypi.org/project/selenium/)
 
-*chrome version 80 [download](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwpqv0BRABEiwA-TySwcmdG9S6AfkK0EmkAgCUchDrG_NLrQmbyZ5PcTMYACxK2po4Tsq5nhoCZh0QAvD_BwE&gclsrc=aw.ds)
+* chrome version 80 --> [Download](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwpqv0BRABEiwA-TySwcmdG9S6AfkK0EmkAgCUchDrG_NLrQmbyZ5PcTMYACxK2po4Tsq5nhoCZh0QAvD_BwE&gclsrc=aw.ds)
 
-*chromedriver 80.0.3987.106[download](https://chromedriver.chromium.org/downloads)
+* chromedriver 80.0.3987.106 --> [Download](https://chromedriver.chromium.org/downloads)
 python 3.7.3+ [download](https://www.python.org/downloads/)
 
-# installation
+# Installation
 
 This is the fun part. Making easygit acessible through the terminal.
 Also a disclaimer of sorts, this installation is for linux systems. Please look on how to make a python script executable for your operating system.
@@ -68,7 +68,7 @@ Also a disclaimer of sorts, this installation is for linux systems. Please look 
         refresh terminal with the following commannd OR just open a new terminal
     ``source .profile``
     
-# setup
+# Setup
 
 I created easygit on ubuntu. 
 To enable easygit to run on other operating systems there are additional settings you have to modify.
