@@ -25,7 +25,7 @@ you can force a push by adding '-f' or '--force'
 
 easygit requires the following to run
 
-*selenium 3.141.0 [documentation](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.current_url)[download](https://pypi.org/project/selenium/)
+*selenium 3.141.0 [documentation](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.current_url) [download](https://pypi.org/project/selenium/)
 
 *chrome version 80 [download](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwpqv0BRABEiwA-TySwcmdG9S6AfkK0EmkAgCUchDrG_NLrQmbyZ5PcTMYACxK2po4Tsq5nhoCZh0QAvD_BwE&gclsrc=aw.ds)
 
