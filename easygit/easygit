@@ -5,6 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 import os
 import sys
+import subprocess
 
 def credentials():
     # github username and password
@@ -196,62 +197,158 @@ def arraytostring(arr):
         string += element
     return string
 def push():
-    reverseuser=sys.argv[::-1]
-    if arraytostring(sys.argv[-1]) == '-f' or '--force':
-        gitlink=arraytostring(sys.argv[-2])
+    # get the link from the command
+    for link_item in sys.argv:
+        if link_item.startswith('https://'):
+            gitlink=link_item
+    # geting the commit name
+    try:
+        # try block to get the commit name  from the second item in the array
+        commitname = sys.argv[2]
+    except:
+        # when the command has an error
+        print("Your command seems to be broken, please run 'easygit --h' to "
+        "check how to push a project \nYou may also go to https://github.com/leonkoech/Easygit "
+        "and read a bit on pushing projects")
+        exit()
+    if commitname.startswith('https://'):
+        # this means the item after push is a link 
+        # so we default the commit to a default name of sorts
+
+        # we'll start by checking commit history
+        commit_result = subprocess.run(['git', 'log','--pretty=oneline'], stdout=subprocess.PIPE)
+        commit_output=[commit_result.stdout.decode('utf-8')]
+        
+        for item in commit_output:
+            item=item.split()
+
+        # if history has items
+        try:
+            # this try block will go through if length has items
+            commitname='update'
+
+        # if history is empty, it should raise a name error
+        except NameError:
+            # so we'll name this commit 'initial commit'
+            commitname='initial commit'
+            
     else:
-        gitlink=arraytostring(sys.argv[-1])
-    x=sys.argv
-    x.pop(-1)
-    x.pop(0)
-    commitname = listtostring(x)
-    
+        # if the user wrote a commit name, go with that
+        commitname = sys.argv[2]
+
+    # initialize git 
     os.system('git init')
+    # run git remote v to get the output first
+    result = subprocess.run(['git', 'remote','-v'], stdout=subprocess.PIPE)
+    remote_result=[result.stdout.decode('utf-8')]
+   
+    # split the results so that we can access the link
+    for item in remote_result:
+        item=item.split()
 
+    # get the item before the item called push. This will be the link.
+    link=item[item.index('(push)')-1]
+
+    # if the link match 
+    if link == gitlink:
+        # display the remote -v output
+        os.system('git remote -v')
+    # if the link is blank
+    elif link == '':
+        #  origin has not been added add it
+        os.system('git remote add origin '+gitlink)
+        os.system('git remote -v')
+
+    # if the links don't match at all
+    else:
+        # remove the origin and add it again
+        os.system('git remote remove origin')
+        os.system('git remote add origin '+gitlink)
+        os.system('git remote -v')
     # Adds the files in the local repository and stages them for commit. 
-    # To unstage a file, use 'git reset HEAD YOUR-FILE'.
-
     os.system('git add .')
-    os.system('git commit -m '+'"'+commitname+'"')
-    # Commits the tracked changes and prepares them to be pushed to a remote repository.
-    # To remove this commit and modify the file, use 'git reset --soft HEAD~1' and commit and add the file again.
-    os.system('git remote add origin '+gitlink)
-    # Sets the new remote
 
+    try:
+        os.system('git commit -m '+commitname)
+    except:
+        print('nothing to commit')
+        exit()
+   
+    
     # reverse the array first
 
-    # now get the last element (first in the string)
-    userstring=arraytostring(reverseuser[0])
-    print('please confirm your identity')
-    if arraytostring(userstring)=='-f' or arraytostring(userstring)=='--force':
+    # now get the last element from the user command (first in the string)
+    userstring=arraytostring(sys.argv[-1])
+    # user will be prompted to enter their credetials before pushing it to github
+    print('please confirm your identity: ')
+    if arraytostring(userstring)=='-f' or arraytostring(userstring)=='-force':
+        print('forcing push......')
         os.system('git push origin master -f')
     else:
-        os.system('git push origin master')
+        os.system('git push -u origin master')
     # Pushes the changes in your local repository up to the remote repository you specified as the origin 
+def reverse():
+    os.system('rm -rf .git')
+def reset():
+    # get the name of the file to be reset
+    filename=sys.argv[2]
+    os.system('git reset HEAD '+filename)
 def helpme():
-    print('usage: easygit [--version] [--help]\nlisted below are the commands for easygit:\n')
-    print('create [project type] [project name]       Create a project on github and open it on vscode working area')
-    print('push [commit name] [project url] [force]       push a project to github. You can add --f or -force at the end. You can also leave the -f if it is not a forced update')
-    print('--help or -h     show available options')
+    print('''
+Listed below are the commands you can use for easygit:
 
+Get current version of easygit:
+    easygit [-version] or easygit [-V]
+    
+Show available options:
+    easygit [-help] or  easygit [-h]
+
+Create a project on github and open it on vscode working area:
+    create [project type] [project name]
+
+Push a exisiting project to github:
+    push ["commit name"] [project url]
+    You can add -f or -force at the end. 
+    push ["commit name"] [project url] -f
+
+    Note: The commit name should be in either single or double quotation marks.
+          Forcing an Update is Optional
+
+Reverse/remove git init:
+    easygit [reverse]
+    use this command if you accidentally ran 'git init' or you accidentlly ran 'easygit push'
+
+Unstage a file:
+    essygit [reset] ["name of file"]
+    name of file should also include the location. 
+    For example "main/test.py" if the terminal directory is not the "main" directory but it's parent''')
 def tostring(usi):
     string=""
     for elements in usi:
         string+=elements
     return string
 def main():
-    userinput=sys.argv[1]
-    ui=tostring(userinput)
-    if ui=='help':
+    # version of easygit
+    version='0.0.3'
+
+    # get the first command of the user
+    userinput=tostring(sys.argv[1])
+    if userinput=='-help' or userinput=='-h':
         helpme()
-    
-    if ui=='push':
+    elif userinput=='-version' or userinput=='-V':
+        # will create a method that compares curent version with the one on the web
+        print('easygit version {}',version)
+    elif userinput=='push':
         push()
-    if ui=='create':
-        print('\n enter the email address and password related to your github account\n')
+    elif userinput=='create':
+        print('\n enter the email address and password related to your github account. You can skip this step if github has not suspected this is a bot. Just press enter twice\n')
         credentials.email=input('email address:')
         credentials.emailpassword=input('email password:')
         setup()
         create()
+    elif userinput=='reverse':
+        reverse()
+    elif userinput=='reset':
+        reset()
 if __name__== "__main__" :
     main()
