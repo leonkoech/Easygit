@@ -241,13 +241,20 @@ def push():
     # run git remote v to get the output first
     result = subprocess.run(['git', 'remote','-v'], stdout=subprocess.PIPE)
     remote_result=[result.stdout.decode('utf-8')]
-   
+    
     # split the results so that we can access the link
     for item in remote_result:
         item=item.split()
 
     # get the item before the item called push. This will be the link.
-    link=item[item.index('(push)')-1]
+    
+    #if item is empty
+    if item == '':
+        os.system('git remote add origin '+gitlink)
+        os.system('git remote -v')
+    # if item is not empty
+    else: 
+        link=item[item.index('(push)')-1]
 
     # if the link match 
     if link == gitlink:
