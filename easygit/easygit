@@ -249,29 +249,29 @@ def push():
     # get the item before the item called push. This will be the link.
     
     #if item is empty
-    if item == '':
+    if len(item) == 0:
         os.system('git remote add origin '+gitlink)
         os.system('git remote -v')
     # if item is not empty
     else: 
         link=item[item.index('(push)')-1]
 
-    # if the link match 
-    if link == gitlink:
-        # display the remote -v output
-        os.system('git remote -v')
-    # if the link is blank
-    elif link == '':
-        #  origin has not been added add it
-        os.system('git remote add origin '+gitlink)
-        os.system('git remote -v')
+        # if the link match 
+        if link == gitlink:
+            # display the remote -v output
+            os.system('git remote -v')
+        # if the link is blank
+        elif link == '':
+            #  origin has not been added add it
+            os.system('git remote add origin '+gitlink)
+            os.system('git remote -v')
 
-    # if the links don't match at all
-    else:
-        # remove the origin and add it again
-        os.system('git remote remove origin')
-        os.system('git remote add origin '+gitlink)
-        os.system('git remote -v')
+        # if the links don't match at all
+        else:
+            # remove the origin and add it again
+            os.system('git remote remove origin')
+            os.system('git remote add origin '+gitlink)
+            os.system('git remote -v')
     # Adds the files in the local repository and stages them for commit. 
     os.system('git add .')
 
